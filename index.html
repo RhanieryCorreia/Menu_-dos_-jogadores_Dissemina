@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
             flex-wrap: wrap;
             flex-direction: row;
             border-radius: 10%;
-            height: 78vh;
+            height: 82vh;
             align-items: center;
             justify-content: center;
         } 
@@ -56,6 +56,7 @@
             color: rgb(7, 7, 7);
             width: 80%;
             text-align: center;
+            cursor: pointer;
         }
         button {
             background-color: rgb(85, 104, 98);
@@ -88,6 +89,9 @@
                 <label for="adicionar1">Adicionar Energia</label>
                 <input type="number" id="adicionar1" value="0" placeholder="Escreva o valor">
                 <button onclick="adicionarEnergia('energia1', 'adicionar1')">Adicionar Energia</button>
+                <button onclick="mult('energia1', 'adicionar1')">Mult energia</button>
+                <button onclick="divi('energia1', 'adicionar1')">divi energia</button>
+
             </fieldset>
         </section>
 
@@ -101,6 +105,9 @@
                 <label for="adicionar2">Adicionar Energia</label>
                 <input type="number" id="adicionar2" value="0" placeholder="Escreva o valor">
                 <button onclick="adicionarEnergia('energia2', 'adicionar2')">Adicionar Energia</button>
+                <button onclick="mult('energia2', 'adicionar2')">Mult energia</button>
+                <button onclick="divi('energia2', 'adicionar2')">divi energia</button>
+
             </fieldset>
         </section>
 
@@ -114,6 +121,9 @@
                 <label for="adicionar3">Adicionar Energia</label>
                 <input type="number" id="adicionar3" value="0" placeholder="Escreva o valor">
                 <button onclick="adicionarEnergia('energia3', 'adicionar3')">Adicionar Energia</button>
+                <button onclick="mult('energia3', 'adicionar3')">Mult energia</button>
+                <button onclick="divi('energia3', 'adicionar3')">divi energia</button>
+
             </fieldset>
         </section>
     </div>
@@ -145,8 +155,43 @@
                 inputEnergia.value = energiaAtual;
             // Opcional: limpar o campo de adição após usar
             inputAdicionar.value = 0;
+        }     
+
         }
-            
+        function mult(idEnergia, idAdicionar){
+            const inputEnergia = document.getElementById(idEnergia) || 0;
+            const inputMult = document.getElementById(idAdicionar) || 0;
+
+            let valorAtual = parseInt(inputEnergia.value);
+            let valorMult = parseInt(inputMult.value);
+
+            valorAtual = valorAtual * valorMult;
+            inputEnergia.value = valorAtual;
+            if(inputEnergia.value >= 101){
+                inputEnergia.value = 100;
+            } else{
+                inputEnergia.value = valorAtual;
+            } if(inputEnergia.value <=-1){
+                inputEnergia.value = 0;
+            }
+        }
+
+        function divi(idEnergia, idAdicionar){
+            const inputEnergia = document.getElementById(idEnergia) || 0;
+            const inputMult = document.getElementById(idAdicionar) || 0;
+
+            let valorAtual = parseInt(inputEnergia.value);
+            let valorMult = parseInt(inputMult.value);
+
+            valorAtual = valorAtual / valorMult;
+            inputEnergia.value = valorAtual;
+            if(inputEnergia.value >= 101){
+                inputEnergia.value = 100;
+            } else{
+                inputEnergia.value = valorAtual;
+            } if(inputEnergia.value <=-1){
+                inputEnergia.value = 0;
+            }
         }
     </script>
 </body>
