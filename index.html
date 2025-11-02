@@ -126,6 +126,22 @@
 
             </fieldset>
         </section>
+
+        <section id="sec4">
+            <fieldset>
+                <h2>Jogador 4</h2>
+                <label for="energia4">Energia</label>
+                <input type="number" id="energia4" placeholder="Energia" value="100">
+                <button onclick="reduzirEnergia('energia3')">Reduzir -10</button>
+
+                <label for="adicionar4">Adicionar Energia</label>
+                <input type="number" id="adicionar4" value="0" placeholder="Escreva o valor">
+                <button onclick="adicionarEnergia('energia4', 'adicionar4')">Adicionar Energia</button>
+                <button onclick="mult('energia4', 'adicionar4')">Mult energia</button>
+                <button onclick="divi('energia4', 'adicionar4')">divi energia</button>
+
+            </fieldset>
+        </section>
     </div>
 
     <script>
@@ -196,3 +212,4 @@
     </script>
 </body>
 </html>
+
