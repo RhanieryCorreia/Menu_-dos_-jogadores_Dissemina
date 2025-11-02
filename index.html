@@ -83,14 +83,14 @@
             <fieldset>
                 <h2>Jogador 1</h2>
                 <label for="energia1">Energia</label>
-                <input type="number" id="energia1" placeholder="Energia" value="100">
-                <button onclick="reduzirEnergia('energia1')">Reduzir -10</button>
+                <input type="number" id="energia1" placeholder="Energia" value="100" disabled>
+                <button onclick="reduzirEnergia(1)">Reduzir -10</button>
 
                 <label for="adicionar1">Adicionar Energia</label>
                 <input type="number" id="adicionar1" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia('energia1', 'adicionar1')">Adicionar Energia</button>
-                <button onclick="mult('energia1', 'adicionar1')">Mult energia</button>
-                <button onclick="divi('energia1', 'adicionar1')">divi energia</button>
+                <button onclick="adicionarEnergia(1)">Adicionar Energia</button>
+                <button onclick="mult(1)">Mult energia</button>
+                <button onclick="divi(1)">divi energia</button>
 
             </fieldset>
         </section>
@@ -99,14 +99,14 @@
             <fieldset>
                 <h2>Jogador 2</h2>
                 <label for="energia2">Energia</label>
-                <input type="number" id="energia2" placeholder="Energia" value="100" size="25px">
-                <button onclick="reduzirEnergia('energia2')">Reduzir -10</button>
+                <input type="number" id="energia2" placeholder="Energia" value="100" size="25px" disabled>
+                <button onclick="reduzirEnergia(2)">Reduzir -10</button>
 
                 <label for="adicionar2">Adicionar Energia</label>
                 <input type="number" id="adicionar2" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia('energia2', 'adicionar2')">Adicionar Energia</button>
-                <button onclick="mult('energia2', 'adicionar2')">Mult energia</button>
-                <button onclick="divi('energia2', 'adicionar2')">divi energia</button>
+                <button onclick="adicionarEnergia( 2)">Adicionar Energia</button>
+                <button onclick="mult(2)">Mult energia</button>
+                <button onclick="divi( 2)">divi energia</button>
 
             </fieldset>
         </section>
@@ -115,14 +115,14 @@
             <fieldset>
                 <h2>Jogador 3</h2>
                 <label for="energia3">Energia</label>
-                <input type="number" id="energia3" placeholder="Energia" value="100">
-                <button onclick="reduzirEnergia('energia3')">Reduzir -10</button>
+                <input type="number" id="energia3" placeholder="Energia" value="100" disabled>
+                <button onclick="reduzirEnergia(3)">Reduzir -10</button>
 
                 <label for="adicionar3">Adicionar Energia</label>
                 <input type="number" id="adicionar3" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia('energia3', 'adicionar3')">Adicionar Energia</button>
-                <button onclick="mult('energia3', 'adicionar3')">Mult energia</button>
-                <button onclick="divi('energia3', 'adicionar3')">divi energia</button>
+                <button onclick="adicionarEnergia(3)">Adicionar Energia</button>
+                <button onclick="mult(3)">Mult energia</button>
+                <button onclick="divi(3)">divi energia</button>
 
             </fieldset>
         </section>
@@ -131,22 +131,52 @@
             <fieldset>
                 <h2>Jogador 4</h2>
                 <label for="energia4">Energia</label>
-                <input type="number" id="energia4" placeholder="Energia" value="100">
-                <button onclick="reduzirEnergia('energia3')">Reduzir -10</button>
+                <input type="number" id="energia4" placeholder="Energia" value="100" disabled>
+                <button onclick="reduzirEnergia(4)">Reduzir -10</button>
 
                 <label for="adicionar4">Adicionar Energia</label>
                 <input type="number" id="adicionar4" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia('energia4', 'adicionar4')">Adicionar Energia</button>
-                <button onclick="mult('energia4', 'adicionar4')">Mult energia</button>
-                <button onclick="divi('energia4', 'adicionar4')">divi energia</button>
+                <button onclick="adicionarEnergia(4)">Adicionar Energia</button>
+                <button onclick="mult(4)">Mult energia</button>
+                <button onclick="divi( 4)">divi energia</button>
 
             </fieldset>
         </section>
     </div>
 
     <script>
-        function reduzirEnergia(idInput) {
-            const input = document.getElementById(idInput);
+        
+        const inputs = {
+            player1: document.getElementById("energia1"),
+            player2: document.getElementById("energia2"),
+            player3: document.getElementById("energia3"),
+            player4: document.getElementById("energia4")
+        }
+
+        const socket = new WebSocket("wss://brodcast-dissemina-service.onrender.com/")
+        socket.onopen = (e) => {
+            console.log('Inicializando valores')
+            for(let i = 0; i<4; i++) {
+                socket.send(JSON.stringify({player: "player"+(i+1)}))
+            }
+        }
+        socket.onmessage = (message) => {
+            console.log(message.data);   
+            const [player, val] = message.data.split(":");
+            const input = inputs[player]
+            if(!input) {
+                console.log("mensagem invalida => "+ message);
+                return
+            }   
+            console.log(message);
+            input.value = Number(val)
+        } 
+        function sendMessage(val, player) {
+            socket.send(JSON.stringify({player: "player"+player, val: val}))
+        }
+
+        function reduzirEnergia(idJogador) {
+            const input = document.getElementById("energia"+idJogador);
             let valorAtual = parseInt(input.value) || 0;
             valorAtual -= 10;
 
@@ -154,11 +184,12 @@
                 valorAtual = 0;
             }
             input.value = valorAtual;
+            sendMessage(input.value, idJogador)
         }
 
-        function adicionarEnergia(idEnergia, idAdicionar) {
-            const inputEnergia = document.getElementById(idEnergia);
-            const inputAdicionar = document.getElementById(idAdicionar);
+        function adicionarEnergia(idJogador) {
+            const inputEnergia = document.getElementById("energia"+idJogador);
+            const inputAdicionar = document.getElementById("adicionar"+idJogador);
 
             let energiaAtual = parseInt(inputEnergia.value) || 0;
             let valorAdicionar = parseInt(inputAdicionar.value) || 0;
@@ -171,12 +202,13 @@
                 inputEnergia.value = energiaAtual;
             // Opcional: limpar o campo de adição após usar
             inputAdicionar.value = 0;
+            sendMessage(inputEnergia.value, idJogador)
         }     
 
         }
-        function mult(idEnergia, idAdicionar){
-            const inputEnergia = document.getElementById(idEnergia) || 0;
-            const inputMult = document.getElementById(idAdicionar) || 0;
+        function mult(idJogador){
+            const inputEnergia = document.getElementById("energia"+idJogador);
+            const inputMult = document.getElementById("adicionar"+idJogador);
 
             let valorAtual = parseInt(inputEnergia.value);
             let valorMult = parseInt(inputMult.value);
@@ -190,11 +222,12 @@
             } if(inputEnergia.value <=-1){
                 inputEnergia.value = 0;
             }
+            sendMessage(inputEnergia.value, idJogador)
         }
 
-        function divi(idEnergia, idAdicionar){
-            const inputEnergia = document.getElementById(idEnergia) || 0;
-            const inputMult = document.getElementById(idAdicionar) || 0;
+        function divi(idJogador){
+            const inputEnergia = document.getElementById("energia"+idJogador)
+            const inputMult = document.getElementById("adicionar"+idJogador);
 
             let valorAtual = parseInt(inputEnergia.value);
             let valorMult = parseInt(inputMult.value);
@@ -208,6 +241,7 @@
             } if(inputEnergia.value <=-1){
                 inputEnergia.value = 0;
             }
+            sendMessage(inputEnergia.value, idJogador)
         }
     </script>
 </body>
