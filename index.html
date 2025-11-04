@@ -1,249 +1,304 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu dos Jogadores</title>
     <style>
-        body{
-            background-color: rgb(28, 26, 26);
-            margin: 0;
-            padding: 0;
-        }
-        header{
-            background-color: rgb(34, 34, 34);
-            color: aqua;
-            width: 99vw;
-            height: 15vh;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-radius: 10%;
-        } 
-        h1{
-            font-family: 'Times New Roman';
-        } 
-        div{
-            background-color: rgb(36, 36, 36);
-            color: rgb(177, 214, 231);
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            border-radius: 10%;
-            height: 82vh;
-            align-items: center;
-            justify-content: center;
-        } 
-        section{
-            margin:80px;
-            width: 20vw;
-            display: flex;
-            flex-direction: column;
-        } 
-        fieldset{
-            border-radius: 20%;
-            border-color: rgb(85, 104, 98);
-            box-shadow: 2px 7px 3px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        } 
-        input{
-            font-size: 20px;
-            border-color: gray;
-            border-radius: 10px;
-            color: rgb(7, 7, 7);
-            width: 80%;
-            text-align: center;
-            cursor: pointer;
-        }
-        button {
-            background-color: rgb(85, 104, 98);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: rgb(65, 84, 78);
-        }
+      body {
+        background-color: rgb(28, 26, 26);
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: rgb(34, 34, 34);
+        color: aqua;
+        width: 100%;
+        height: 15vh;
+        border-radius: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        box-shadow: 4px 4px 10px blue;
+        border-bottom: 1px solid white;
+        position: static;
+        .titulo{
+        font-family: "Times New Roman";
+        font-size: 3em;
+        font-weight: bold;
+        text-shadow: 2px 4px 4px rgb(0, 89, 255);
+        text-decoration: underline;
+      }
+      }
+      
+      div {
+        background-color: rgb(36, 36, 36);
+        color: rgb(169, 196, 209);
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        border-radius: 10%;
+        height: 82vh;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 10px 10px blue;
+        border: 1px solid white;
+      }
+      section {
+        padding: 2%;
+        width: 20vw;
+        display: flex;
+        flex-direction: column;
+      }
+      fieldset {
+        border-radius: 20%;
+        border-color: rgb(85, 104, 98);
+        box-shadow: 2px 7px 3px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input {
+        font-size: 20px;
+        border-color: gray;
+        border-radius: 10px;
+        color: rgb(99, 2, 255);
+        width: 80%;
+        text-align: center;
+        cursor: pointer;
+        text-shadow: 2px 2px 3px rgb(253, 7, 7);
+      }
+      button {
+        background-color: rgb(85, 104, 98);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: rgb(65, 84, 78);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Menu dos Jogadores</h1>
-    </header> <br>
+      <h1 class="titulo">Menu dos Jogadores</h1>
+    </header>
+    <br />
     <div>
-        <section id="sec1">
-            <fieldset>
-                <h2>Jogador 1</h2>
-                <label for="energia1">Energia</label>
-                <input type="number" id="energia1" placeholder="Energia" value="100" disabled>
-                <button onclick="reduzirEnergia(1)">Reduzir -10</button>
+      <section id="sec1">
+        <fieldset>
+          <h2>Jogador 1</h2>
+          <label for="energia1">Energia</label>
+          <input
+            type="number"
+            id="energia1"
+            placeholder="Energia"
+            value="100"
+            disabled
+          />
+          <button onclick="reduzirEnergia(1)">Reduzir -10</button>
 
-                <label for="adicionar1">Adicionar Energia</label>
-                <input type="number" id="adicionar1" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia(1)">Adicionar Energia</button>
-                <button onclick="mult(1)">Mult energia</button>
-                <button onclick="divi(1)">divi energia</button>
+          <label for="adicionar1">Adicionar Energia</label>
+          <input
+            type="number"
+            id="adicionar1"
+            value="0"
+            placeholder="Escreva o valor"
+          />
+          <button onclick="adicionarEnergia(1)">Adicionar Energia</button>
+          <button onclick="mult(1)">Mult energia</button>
+          <button onclick="divi(1)">divi energia</button>
+        </fieldset>
+      </section>
 
-            </fieldset>
-        </section>
+      <section id="sec2">
+        <fieldset>
+          <h2>Jogador 2</h2>
+          <label for="energia2">Energia</label>
+          <input
+            type="number"
+            id="energia2"
+            placeholder="Energia"
+            value="100"
+            size="25px"
+            disabled
+          />
+          <button onclick="reduzirEnergia(2)">Reduzir -10</button>
 
-        <section id="sec2">
-            <fieldset>
-                <h2>Jogador 2</h2>
-                <label for="energia2">Energia</label>
-                <input type="number" id="energia2" placeholder="Energia" value="100" size="25px" disabled>
-                <button onclick="reduzirEnergia(2)">Reduzir -10</button>
+          <label for="adicionar2">Adicionar Energia</label>
+          <input
+            type="number"
+            id="adicionar2"
+            value="0"
+            placeholder="Escreva o valor"
+          />
+          <button onclick="adicionarEnergia( 2)">Adicionar Energia</button>
+          <button onclick="mult(2)">Mult energia</button>
+          <button onclick="divi( 2)">divi energia</button>
+        </fieldset>
+      </section>
 
-                <label for="adicionar2">Adicionar Energia</label>
-                <input type="number" id="adicionar2" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia( 2)">Adicionar Energia</button>
-                <button onclick="mult(2)">Mult energia</button>
-                <button onclick="divi( 2)">divi energia</button>
+      <section id="sec3">
+        <fieldset>
+          <h2>Jogador 3</h2>
+          <label for="energia3">Energia</label>
+          <input
+            type="number"
+            id="energia3"
+            placeholder="Energia"
+            value="100"
+            disabled
+          />
+          <button onclick="reduzirEnergia(3)">Reduzir -10</button>
 
-            </fieldset>
-        </section>
+          <label for="adicionar3">Adicionar Energia</label>
+          <input
+            type="number"
+            id="adicionar3"
+            value="0"
+            placeholder="Escreva o valor"
+          />
+          <button onclick="adicionarEnergia(3)">Adicionar Energia</button>
+          <button onclick="mult(3)">Mult energia</button>
+          <button onclick="divi(3)">divi energia</button>
+        </fieldset>
+      </section>
 
-        <section id="sec3">
-            <fieldset>
-                <h2>Jogador 3</h2>
-                <label for="energia3">Energia</label>
-                <input type="number" id="energia3" placeholder="Energia" value="100" disabled>
-                <button onclick="reduzirEnergia(3)">Reduzir -10</button>
+      <section id="sec4">
+        <fieldset>
+          <h2>Jogador 4</h2>
+          <label for="energia4">Energia</label>
+          <input
+            type="number"
+            id="energia4"
+            placeholder="Energia"
+            value="100"
+            disabled
+          />
+          <button onclick="reduzirEnergia(4)">Reduzir -10</button>
 
-                <label for="adicionar3">Adicionar Energia</label>
-                <input type="number" id="adicionar3" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia(3)">Adicionar Energia</button>
-                <button onclick="mult(3)">Mult energia</button>
-                <button onclick="divi(3)">divi energia</button>
-
-            </fieldset>
-        </section>
-
-        <section id="sec4">
-            <fieldset>
-                <h2>Jogador 4</h2>
-                <label for="energia4">Energia</label>
-                <input type="number" id="energia4" placeholder="Energia" value="100" disabled>
-                <button onclick="reduzirEnergia(4)">Reduzir -10</button>
-
-                <label for="adicionar4">Adicionar Energia</label>
-                <input type="number" id="adicionar4" value="0" placeholder="Escreva o valor">
-                <button onclick="adicionarEnergia(4)">Adicionar Energia</button>
-                <button onclick="mult(4)">Mult energia</button>
-                <button onclick="divi( 4)">divi energia</button>
-
-            </fieldset>
-        </section>
+          <label for="adicionar4">Adicionar Energia</label>
+          <input
+            type="number"
+            id="adicionar4"
+            value="0"
+            placeholder="Escreva o valor"
+          />
+          <button onclick="adicionarEnergia(4)">Adicionar Energia</button>
+          <button onclick="mult(4)">Mult energia</button>
+          <button onclick="divi( 4)">divi energia</button>
+        </fieldset>
+      </section>
     </div>
 
     <script>
-        
-        const inputs = {
-            player1: document.getElementById("energia1"),
-            player2: document.getElementById("energia2"),
-            player3: document.getElementById("energia3"),
-            player4: document.getElementById("energia4")
+      const inputs = {
+        player1: document.getElementById("energia1"),
+        player2: document.getElementById("energia2"),
+        player3: document.getElementById("energia3"),
+        player4: document.getElementById("energia4"),
+      };
+
+      const socket = new WebSocket(
+        "wss://brodcast-dissemina-service.onrender.com/"
+      );
+      socket.onopen = (e) => {
+        console.log("Inicializando valores");
+        for (let i = 0; i < 4; i++) {
+          socket.send(JSON.stringify({ player: "player" + (i + 1) }));
         }
-
-        const socket = new WebSocket("wss://brodcast-dissemina-service.onrender.com/")
-        socket.onopen = (e) => {
-            console.log('Inicializando valores')
-            for(let i = 0; i<4; i++) {
-                socket.send(JSON.stringify({player: "player"+(i+1)}))
-            }
+      };
+      socket.onmessage = (message) => {
+        console.log(message.data);
+        const [player, val] = message.data.split(":");
+        const input = inputs[player];
+        if (!input) {
+          console.log("mensagem invalida => " + message);
+          return;
         }
-        socket.onmessage = (message) => {
-            console.log(message.data);   
-            const [player, val] = message.data.split(":");
-            const input = inputs[player]
-            if(!input) {
-                console.log("mensagem invalida => "+ message);
-                return
-            }   
-            console.log(message);
-            input.value = Number(val)
-        } 
-        function sendMessage(val, player) {
-            socket.send(JSON.stringify({player: "player"+player, val: val}))
+        console.log(message);
+        input.value = Number(val);
+      };
+      function sendMessage(val, player) {
+        socket.send(JSON.stringify({ player: "player" + player, val: val }));
+      }
+
+      function reduzirEnergia(idJogador) {
+        const input = document.getElementById("energia" + idJogador);
+        let valorAtual = parseInt(input.value) || 0;
+        valorAtual -= 10;
+
+        if (valorAtual <= -1) {
+          valorAtual = 0;
         }
+        input.value = valorAtual;
+        sendMessage(input.value, idJogador);
+      }
 
-        function reduzirEnergia(idJogador) {
-            const input = document.getElementById("energia"+idJogador);
-            let valorAtual = parseInt(input.value) || 0;
-            valorAtual -= 10;
+      function adicionarEnergia(idJogador) {
+        const inputEnergia = document.getElementById("energia" + idJogador);
+        const inputAdicionar = document.getElementById("adicionar" + idJogador);
 
-            if(valorAtual <= -1){
-                valorAtual = 0;
-            }
-            input.value = valorAtual;
-            sendMessage(input.value, idJogador)
+        let energiaAtual = parseInt(inputEnergia.value) || 0;
+        let valorAdicionar = parseInt(inputAdicionar.value) || 0;
+
+        energiaAtual += valorAdicionar;
+        inputEnergia.value = energiaAtual;
+        if (inputEnergia.value >= 101) {
+          inputEnergia.value = 100;
+        } else {
+          inputEnergia.value = energiaAtual;
+          // Opcional: limpar o campo de adição após usar
+          inputAdicionar.value = 0;
+          sendMessage(inputEnergia.value, idJogador);
         }
+      }
+      function mult(idJogador) {
+        const inputEnergia = document.getElementById("energia" + idJogador);
+        const inputMult = document.getElementById("adicionar" + idJogador);
 
-        function adicionarEnergia(idJogador) {
-            const inputEnergia = document.getElementById("energia"+idJogador);
-            const inputAdicionar = document.getElementById("adicionar"+idJogador);
+        let valorAtual = parseInt(inputEnergia.value);
+        let valorMult = parseInt(inputMult.value);
 
-            let energiaAtual = parseInt(inputEnergia.value) || 0;
-            let valorAdicionar = parseInt(inputAdicionar.value) || 0;
-
-            energiaAtual += valorAdicionar;
-            inputEnergia.value = energiaAtual;
-            if(inputEnergia.value >=101){
-                inputEnergia.value = 100;
-            } else{
-                inputEnergia.value = energiaAtual;
-            // Opcional: limpar o campo de adição após usar
-            inputAdicionar.value = 0;
-            sendMessage(inputEnergia.value, idJogador)
-        }     
-
+        valorAtual = valorAtual * valorMult;
+        inputEnergia.value = valorAtual;
+        if (inputEnergia.value >= 101) {
+          inputEnergia.value = 100;
+        } else {
+          inputEnergia.value = valorAtual;
         }
-        function mult(idJogador){
-            const inputEnergia = document.getElementById("energia"+idJogador);
-            const inputMult = document.getElementById("adicionar"+idJogador);
-
-            let valorAtual = parseInt(inputEnergia.value);
-            let valorMult = parseInt(inputMult.value);
-
-            valorAtual = valorAtual * valorMult;
-            inputEnergia.value = valorAtual;
-            if(inputEnergia.value >= 101){
-                inputEnergia.value = 100;
-            } else{
-                inputEnergia.value = valorAtual;
-            } if(inputEnergia.value <=-1){
-                inputEnergia.value = 0;
-            }
-            sendMessage(inputEnergia.value, idJogador)
+        if (inputEnergia.value <= -1) {
+          inputEnergia.value = 0;
         }
+        sendMessage(inputEnergia.value, idJogador);
+      }
 
-        function divi(idJogador){
-            const inputEnergia = document.getElementById("energia"+idJogador)
-            const inputMult = document.getElementById("adicionar"+idJogador);
+      function divi(idJogador) {
+        const inputEnergia = document.getElementById("energia" + idJogador);
+        const inputMult = document.getElementById("adicionar" + idJogador);
 
-            let valorAtual = parseInt(inputEnergia.value);
-            let valorMult = parseInt(inputMult.value);
+        let valorAtual = parseInt(inputEnergia.value);
+        let valorMult = parseInt(inputMult.value);
 
-            valorAtual = valorAtual / valorMult;
-            inputEnergia.value = valorAtual;
-            if(inputEnergia.value >= 101){
-                inputEnergia.value = 100;
-            } else{
-                inputEnergia.value = valorAtual;
-            } if(inputEnergia.value <=-1){
-                inputEnergia.value = 0;
-            }
-            sendMessage(inputEnergia.value, idJogador)
+        valorAtual = valorAtual / valorMult;
+        inputEnergia.value = valorAtual;
+        if (inputEnergia.value >= 101) {
+          inputEnergia.value = 100;
+        } else {
+          inputEnergia.value = valorAtual;
         }
+        if (inputEnergia.value <= -1) {
+          inputEnergia.value = 0;
+        }
+        sendMessage(inputEnergia.value, idJogador);
+      }
     </script>
-</body>
+  </body>
 </html>
-
